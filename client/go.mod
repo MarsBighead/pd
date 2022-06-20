@@ -10,7 +10,17 @@ require (
 	github.com/pingcap/log v0.0.0-20211215031037-e024ba4eb0ee
 	github.com/prometheus/client_golang v1.11.0
 	github.com/stretchr/testify v1.7.0
-	go.uber.org/goleak v1.1.11
+	github.com/tikv/pd v0.0.0-00010101000000-000000000000
+	go.uber.org/goleak v1.1.12
 	go.uber.org/zap v1.20.0
 	google.golang.org/grpc v1.43.0
+)
+
+replace github.com/tikv/pd => ../
+
+// reset grpc and protobuf deps in order to import client and server at the same time
+replace (
+	github.com/golang/protobuf v1.5.2 => github.com/golang/protobuf v1.3.4
+	google.golang.org/grpc v1.43.0 => google.golang.org/grpc v1.26.0
+	google.golang.org/protobuf v1.26.0 => github.com/golang/protobuf v1.3.4
 )
